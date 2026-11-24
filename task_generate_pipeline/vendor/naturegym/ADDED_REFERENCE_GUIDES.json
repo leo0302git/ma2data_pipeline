@@ -1,0 +1,20 @@
+{
+  "original_bundle_sha256": "6a451144aee85a12a905ac72cb563fa471965e575507318b2a41d20f3ed99f4c",
+  "extended_bundle_sha256": "0fc8caaf447743e2cf338af61e4a153d03321134a68bebb2bb5030c7c2677602",
+  "archive_sha256": "f1c56c82bb0d33ce35d75c158cdaf85139c13ea7ef30a61cc3e730b3923f76a4",
+  "files": [
+    {
+      "archive_path": ".agents/skills/paper-filter/references/level3_rules.md",
+      "sha256": "bd28740e6cecf00e051f92d01c59de413226318f403a00e03f133956cb09f1e2"
+    },
+    {
+      "archive_path": ".agents/skills/paper-filter/references/level2_rules.md",
+      "sha256": "4edf54c69a7a5a6eca4dae01ff73ba94d29e3b995fad7241ae126a014ae2945c"
+    },
+    {
+      "archive_path": ".agents/skills/task-build/references/metadata_guide.md",
+      "sha256": "c2e2cd11096cf97ad8d2725e8a14007c918213fb0860af447766dd09c09055d9"
+    }
+  ],
+  "policy": "Restores missing original source guides; strict reported-results policy. Original checker, evaluator and other twenty reviewed files unchanged."
+}

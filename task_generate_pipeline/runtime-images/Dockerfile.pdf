@@ -1,0 +1,4 @@
+FROM sha256:a462dd730f193e17947cd9d9b8eb775fde8054f5daed324210ade20d1627da67
+COPY pypdf-7.1.1-py3-none-any.whl /tmp/project-wheels/pypdf-7.1.1-py3-none-any.whl
+RUN python -m pip install --no-cache-dir --no-index --no-deps /tmp/project-wheels/pypdf-7.1.1-py3-none-any.whl && rm /tmp/project-wheels/pypdf-7.1.1-py3-none-any.whl
+LABEL com.frontis.project="task_generate_pipeline" com.frontis.runtime="pdf-seed43"

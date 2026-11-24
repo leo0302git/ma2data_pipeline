@@ -1,0 +1,20 @@
+{
+  "version": "seed43-v32-maintenance",
+  "release_date": "2026-11-24",
+  "status": "maintenance_release_validation_receipts_separate",
+  "base_verified_release": "seed43-v30-finalizer-contract",
+  "includes_candidate": "seed43-v31-structured-json-candidate1",
+  "comparison_default": "strict_upstream_reported",
+  "generated_measured_requires_explicit_selection": true,
+  "native_reference_bundle_sha256": "0fc8caaf447743e2cf338af61e4a153d03321134a68bebb2bb5030c7c2677602",
+  "model_e2e_revalidation": "not_run_accounts_removed_and_jobs_paused",
+  "changes": [
+    "Unified project/run pause checks and read-only recovery reports",
+    "Strict bounded structured-result correction with reserved call",
+    "No-call skip for already verified same-identity published tasks",
+    "Versioned preservation audit independent of deleted personal login backups",
+    "Explicit diagnostic runtime preflight and current version documentation",
+    "Shared seed registry moved outside frozen engine; old group bindings remain fixed"
+  ],
+  "historical_packages_rewritten": false
+}

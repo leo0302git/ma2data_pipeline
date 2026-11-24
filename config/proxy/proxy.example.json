@@ -1,0 +1,1 @@
+{"authentication": {"password": null, "username": null}, "endpoint": {"host": "127.0.0.1", "port": null}, "instructions": "Use your own authorized upstream and choose a free port. Do not change shared proxies.", "personal_credentials_included": false, "proxy_url_file": "private/proxy/proxy-url"}

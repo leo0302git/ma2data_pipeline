@@ -1,0 +1,5 @@
+schema_version = "1.4"
+
+[task]
+name = "naturebench/task-name"
+description = "Task name"

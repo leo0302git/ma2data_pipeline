@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id": "E1",
+      "basis": "Scientific requirement, assessed objects and conditions, and how submitted observations and trusted references support the judgment",
+      "components": [
+        {
+          "id": "R1",
+          "scorer": "rule",
+          "criterion": "Required result is established by the supplied evidence",
+          "score": {
+            "min": 0,
+            "max": 2,
+            "anchors": {
+              "0": "The required result is unsupported or incorrect.",
+              "1": "Only the specified partial achievement is supported.",
+              "2": "All stated requirements of this assessment are met."
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "aggregation": {
+        "method": "sum",
+        "description": "Sum the component points; component maxima express their contributions."
+      }
+    }
+  ]
+}

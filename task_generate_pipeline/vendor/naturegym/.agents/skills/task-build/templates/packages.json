@@ -1,0 +1,11 @@
+{
+  "from_base": true,
+  "base_packages": [
+    {"pip": "numpy", "import": "numpy", "version": "1.26.4"},
+    {"pip": "scikit-learn", "import": "sklearn", "version": "1.6.1"}
+  ],
+  "task_packages": [
+    {"pip": "tensorflow", "import": "tensorflow", "version": "2.19.0", "tier": 3},
+    {"pip": "fcd-torch", "import": "fcd_torch", "version": "1.0.7", "tier": 1}
+  ]
+}

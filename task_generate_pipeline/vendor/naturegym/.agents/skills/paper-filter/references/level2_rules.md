@@ -1,0 +1,250 @@
+# Level 2: Evaluation Validity Filtering
+
+## Level Responsibilities
+
+Determine whether the task retained at Level 1 has source-supported evaluation criteria that can be applied automatically and reproducibly, and whether corresponding source results or judgment standards can be located. Identify candidate instances, deliverable requirements O, and evaluation specification V using the [core definitions](core_definitions.md).
+
+Rules 2.1–2.2 assess evaluation definitions, available comparison scores or rubric information, and evaluation feasibility. The overall decision checks coverage of candidate instances and task-wide requirements under the same G. Level 3 confirms instance boundaries and resources, extracts instance-specific comparison results or judgment standards, checks their applicability, and records final inclusion; task-build implements evaluation.
+
+## Identification and Extraction
+
+Use G and C established at Level 1 to identify candidate instances and determine their required deliverables O and evaluation specification V. Cross-check the candidate instances against main result tables/figures and supplementary results relevant to G for omitted research objects, data combinations or conditions; a table or dataset alone does not define an instance. For each necessary judgment, identify the result to assess, its required information and the computational or semantic checks that establish it; use these requirements to determine O and V together.
+
+Extract the necessary requirements from source evidence before judging their feasibility under Rules 2.1–2.2. Availability of an easier assessment or comparison result does not justify changing those requirements.
+
+### Instance Boundaries and Relationships
+
+Make an initial identification of the source instances so that O and V cover the applicable problems under G. Apply the boundaries and relationships in [Settings / Instances](core_definitions.md#settings--instances).
+
+1. **Locate candidate settings.** Use the paper's problem definitions, source-method applications, experimental settings and corresponding results to identify the research objects or object collections, conditions and required results. For benchmarks, use the problem and evaluation specifications.
+2. **Identify the required solving and assessment.** For each candidate, trace the permitted starting information, unresolved work, required result and necessary validation. Use the core definitions to group these into candidate instances and identify their relationships. Cite the source evidence for the objects, conditions and requirements.
+
+Use these candidates to extract O and V and locate the source results or judgment standards needed by their evaluation items. [Level 3](level3_rules.md#instance-identification-and-resource-bindings) completes instance identification by combining these requirements with D/E evidence, confirming boundaries and relationships and completing resource bindings.
+
+### Deliverables O
+
+Determine what the Solver must submit so that V can assess the required results under G and C. Use the source's scientific outputs and assessment procedures as the basis for identifying submission requirements. The authors' chosen forms provide references; the task may use a different form that meets G and C and supplies the submission contents and capabilities required by V.
+
+1. **Identify required contents and supporting materials.** For each necessary assessment, identify the results and supporting materials required from the Solver, and the research objects they must cover. Trace which submitted contents or evaluation-generated observations establish the result, beyond a self-reported conclusion or score. The submission must support assessment of a new solution; listing the author's outputs alone does not establish what another Solver must submit.
+
+2. **Determine the required submission form.** Choose forms that expose the required contents, supporting materials and capabilities to V, such as reports, structured results or data, designs/specifications, and programs or models. Where a necessary check requires computation or execution, require results or artifacts that a program can directly parse or invoke, with the definitions and correspondence needed to interpret them. These contents may be part of a report or associated artifacts. A report alone qualifies only when its contents suffice for all required judgments; a fixed-object goal or the absence of a leaderboard metric does not establish this. A description of a capability cannot replace a required demonstration or test of that capability. When several artifacts or forms are needed, explain what each supports and how they must correspond. Preserve task-required submission properties and capabilities; leave package filenames, serialization and concrete invocation interfaces to task-build.
+
+3. **Separate required submissions from other artifacts.** Distinguish contents the Solver must submit from observations generated by evaluation and artifacts used only during solving. Exclude solving-only artifacts. Each O entry specifies a complete submission requirement, including necessary supporting materials; multiple files may jointly fulfill that requirement.
+
+### Evaluation V
+
+For program goal metrics, identify the quantity, unit and direction (`higher_is_better`, `lower_is_better` or `target`), and record supported theoretical lower/upper bounds in `criteria`, including one-sided or absent bounds with source support. For `target`, establish a source-supported finite numerical target for each assessment scope, in the raw quantity's units, and closeness measured by absolute distance. State its definition and source in `criteria` and `source`. Level 3 completes target values and selects the corresponding SOTA and zero reference under [Program Reference Selection](level3_rules.md#program-reference-selection).
+
+#### Identify and Separate Evaluation Items
+
+Use G, C and the candidate instances to identify all candidate assessments from the source's problem definitions, main results, evaluation procedures and validation analyses, including supplementary material. Include reported assessments and other judgments necessary to establish G under C, determining how proposed O supplies their required results and support. Establish any necessary rubric from source information. Identify the numerical metrics, acceptance conditions and qualitative judgments used to assess task results.
+
+Identify independent final judgments once, merging repeated reports of the same assessment and retaining their source locations. Keep a source-defined composite or combined rubric as one item. Necessary internal checks and calculations remain within that item; do not split a multi-step assessment into separate scoring items. Exclude analyses not needed to assess G under C before creating item records, and explain consequential omissions in the level conclusion.
+
+Scientific and functional assessments of submitted results belong in V. C supplies applicable solving conditions without requiring a separate evaluation item for each rule. Generic submission completeness, file-format and interface checks, information isolation and evaluator correctness are construction/runtime responsibilities.
+
+#### Extract Information for Each Item
+
+For each candidate item, state the result, deliverable or condition assessed and the judgment it supports in `requirement`, cite the source evidence, and extract the following:
+
+1. **Applicable instances and assessment scope.** Identify the candidate instances to which the item applies. For the same assessment, use separate per-instance evaluation when the source provides corresponding individual assessments or results, even if it also reports an aggregate. Use joint evaluation only when that assessment is available solely for the combined scope in the source. For a joint assessment, identify the participants, joint criteria and any required aggregation. Sharing an item means sharing its assessment definition, not its resulting value.
+
+   Record `scope` as `instance` or `joint`. Use per-instance validity when each instance can be judged separately; use joint validity when the condition requires their results together. Describe candidate groups in `protocol`; Level 3 confirms their instance IDs in `instance_groups`. The same judgment may be applied to several groups without creating different item definitions.
+
+2. **Evaluation category.** Use `validity` for mandatory acceptance judgments and `goal_achievement` for required degrees of quality or success. Validity requires explicit acceptance conditions and the reference information or observations needed to apply them, rather than comparison scores. Record these as evaluation standards in `criteria`; D supplies any required reference resources.
+
+   Retain at least one `goal_achievement` item assessing G. When a source-supported goal judgment is binary, use 0/1 and record it once as `goal_achievement`, without duplicating the same judgment as `validity`.
+
+   For each goal item, record `validity_item_ids` for the validity judgments that are necessary acceptance prerequisites, or `[]` when none are separate. Explain their scientific effect and scope in `protocol`, supported by the source. Do not infer an effect merely from shared data or instance membership. Multiple independent necessary conditions may be separate validity items; internal steps of one acceptance judgment stay within that item. Validity items do not reference other validity items.
+
+3. **Evaluation definition.** Record each part separately:
+   - **`requirement`**: The result, capability or property assessed and the G/C/O requirement it establishes, stated briefly.
+   - **`required_information`**: Contents read from O, reference information supplied through D, and observations generated during evaluation, including their required correspondence. Identify facts that must be recorded during solving rather than reconstructed from the final submission; Solver-written assertions or logs alone do not establish them. Link the supplying O entries through `deliverable_ids`; concrete paths and interfaces belong to task-build.
+   - **`criteria`**: The measurement formula or judgment standard, including how internal checks or scores determine the item's final judgment. For numerical measurements, specify quantities, units, direction/target, acceptance thresholds and tolerances; for rubric-based assessment, identify source-supported criteria and any established levels, weights and combination rules. Metric-internal calculations belong here.
+   - **`protocol`**: Applicable objects and conditions, data selection/preprocessing and partitioning, programmatic preparation of assessment inputs and observations, each judgment method's responsibility and information flow, prerequisite order, failure treatment, repetitions and aggregation across runs. For required solving records, define the covered operations and period and how they support the judgment. Preserve source requirements under the [source evaluation protocol](#source-evaluation-protocol).
+
+   These fields describe the adopted assessment and required facts. Level 3 completes instance/resource support; task-build implements the assessment, including evaluation logic, rubrics, collection of required observations, and necessary tool calls and feedback handling.
+
+4. **Assessment method.** Preserve the criteria, metrics and required procedures established from the paper and supporting materials, allowing only the defined adaptations. Record one `method` according to how those requirements determine the item's final score or validity judgment, not its deliverable form:
+
+| Method | Definition |
+|--------|------------|
+| `program` | Computer-based measurement or computation that evaluates a defined scientific quantity, numerical metric or validity condition. |
+| `rubric` | An explicit rubric whose judgments can be made by deterministic rules (`rule`) or an LLM Judge (`llm`) and combined into one result. |
+
+For a rubric, establish the standards, required information and appropriate assessment route for each necessary judgment, following the computational/semantic division below. Record the standards in `criteria`, the judgment responsibilities and information flow in `protocol`/`required_information`, and the feasibility basis in Rule 2.2 evidence. Task-build defines the components and selects each component's effective `rule` or `llm` scorer; do not defer the scientific standards or automation feasibility.
+
+Use deterministic computation for defined numerical measurements and mechanically decidable scientific conditions, including within rubric items. Use LLM judgments for the scientific meaning, reasoning or adequacy of evidence that requires semantic assessment. Mixed assessments retain both responsibilities: record the checks' roles in `protocol` and their effects on the judgment in `criteria`. The Judge must not replace necessary computation or disregard its required effects.
+
+Prepare assessment inputs and context programmatically; reserve the LLM Judge for applying assessment criteria. Record preparation steps in `protocol` and the required contents in `required_information`. Running a program only to obtain observations does not make the item `program`. Mechanical sums, averages, weighted aggregation or pass-rate calculation of rubric judgments remain `rubric`. A scientific acceptance check that determines validity or score is a judgment even when performed before other scoring.
+
+Record only the adopted computational `method` in task info. Assess new physical operations and human participation under [Rule 2.2](#physical-and-human-assessment); retain unsupported source requirements and supported changes in screening records. Existing annotations or physical measurements used as references do not themselves require new human or physical assessment.
+
+### Comparison Results
+
+For each goal-achievement item, locate a source-supported comparison or judgment basis. Record what information is available and where it is reported; leave concrete result extraction and instance-level comparability decisions to Level 3.
+
+1. **Locate the basis for each assessment.** For a numerical metric, locate reported scores or complete constituent results qualifying for [permitted aggregation](#aggregating-reported-results), with their corresponding methods and source locations. For a rubric-based assessment, locate an existing rubric or source information sufficient to establish the judgment criteria, such as existing rubric used by the source paper, reported findings, reference facts or validation evidence. Identify the information that supports the assessment; the availability of an LLM alone does not supply a judgment basis.
+
+2. **Identify the reported scope and context.** Note the research objects, conditions and whether the source provides individual or joint assessments/results. For the same assessment, use individual results when available, even if an aggregate is also reported; joint assessment applies only when the source provides that assessment solely for the combined scope. Identify candidate comparison methods or source-result identifiers and the locations of their conditions. Level 3 confirms this scope against the resolved instances and resources.
+
+3. **Record source locations.** Describe the available basis and precise source locations in the item's `source` and Rule 2.1 evidence. Do not populate goal items' `comparison_results` at this level, calculate missing scores or treat rubric maxima as reported results.
+
+## Screening Rules
+
+Apply Rule 2.1 to each identified independent assessment in its applicable instance scope, then Rule 2.2 to items passing Rule 2.1. Keep failed necessary assessments in screening records. The overall decision checks whether qualifying items cover the complete retained task.
+
+### Rule 2.1: Evaluation Criteria Validity and Comparability
+
+#### Pass Conditions
+
+An item passes when all four conditions hold:
+
+1. **Necessary assessment**: It verifies G or an applicable C requirement. Assessment of O must trace back to those requirements; adding a deliverable does not independently justify a new scientific judgment. Distinguish evaluation of the task result from analyses that only explain the authors' method, component choices or search behavior, or address an application outside G. Analysis names and placement do not decide necessity: a mechanism, ablation or robustness analysis is required when it tests a task requirement.
+2. **Independent judgment**: Independent final judgments are recorded as separate items, while the same judgment is scored only once. Keep the necessary internal checks and calculations for each judgment within its evaluation item; do not split a multi-step assessment into separate items for its individual steps. Repeated reports and aggregate/component results do not duplicate final scoring.
+3. **Defined standards**: Source inspection establishes the required information, scientific judgment standard and evaluation protocol. Numerical measures define the quantity and its interpretation; validity defines acceptance conditions; rubric judgments have source-supported standards.
+4. **Comparison scores**: Numerical goal-achievement metrics have corresponding reported method scores or complete reported constituents supporting a permitted aggregate. For rubric judgments without reported scores, it supplies a rubric or information sufficient to establish scoring standards. Validity requires acceptance standards, not comparison scores.
+
+Do not defer an essential definition or substitute an easier assessment.
+
+#### Judgment Guidance
+
+##### Avoid Duplicate Evaluation
+
+- Merge repeated reports of the same assessment, preserving relevant source locations.
+- When the same judgment has individual results and an aggregate, retain the individual assessments. Use joint evaluation only when the source provides that assessment solely for the combined scope.
+- Preserve a source-defined composite or combined rubric, with its internal checks and calculations, as one final item. Do not also score its constituent calculations independently.
+- Distinct required parameters or conditions may define different judgments. Correlation or shared observations alone does not establish duplication; do not select one convenient setting merely to reduce item count.
+
+##### Evaluation Standards and Implementation Details
+
+Determine what information or observations the evaluator needs and how they support the particular judgment. Generic requirements such as reasonable, plausible or complete are insufficient without task-specific standards.
+
+Preserve the source claim's scope and qualifications, including assumptions or uncertainty that limit what it establishes. Do not demand a stronger conclusion than the task requires or accept a weaker substitute for its necessary judgment.
+
+Preserve an existing rubric when applicable, or establish its standards from source information. Do not replace a numerical assessment with a rubric because its definition or comparison score is missing/unclear. A rubric cannot replace necessary experimental validation.
+
+Level 2 identifies definitions and judges validity and feasibility; it does not implement an evaluator or reproduce paper results. Inspect relevant code only when necessary definitions are supplied there, source wording remains unclear, or a suspected discrepancy requires checking. A lack of evaluator code alone does not fail the item.
+
+If source inspection leaves a specific uncertainty, a small diagnostic calculation or isolated code check may use synthetic inputs or a few available records. Avoid bulk acquisition, environment setup, model training or running solving/evaluation workflows. Stop when the question is resolved; the result supports only the point tested. Record the question, scope and observation in rule evidence. Missing essential scientific standards cannot be supplied by these checks or deferred.
+
+##### Comparison Evidence
+
+Locate the scores, qualifying constituent results or rubric information required by condition 4 and their source context. Generic discussion or a plan to find them later is insufficient. The comparison requirement is unchanged by the item's `method`, including rubric judgments aggregated into a numerical metric. Leave permitted aggregate calculation to Level 3; do not invent missing scores or treat rubric maxima as reported results.
+
+[Level 3](level3_rules.md#comparison-evidence) extracts the results and checks their correspondence to each instance's task, data and evaluation. Level 2 establishes availability, not completed instance-level comparability.
+
+###### Aggregating Reported Results
+
+Use a compatible directly reported aggregate when available. When only constituent results are reported, permit a reference aggregate only when all three conditions hold:
+
+1. **Supported assessment**: Aggregate results of an established assessment without introducing a new scientific metric. Follow the source aggregation when defined; otherwise justify a fixed aggregation from the assessment's scientific meaning, to be applied identically to source and Solver results.
+2. **Complete corresponding results**: The reported constituents mathematically determine the required statistic for the same method/variant and corresponding objects and conditions. Establish grouping, weights, repetitions and failure treatment, accounting for reported precision. Summaries of a different statistic cannot supply missing operands.
+3. **Preserved requirements and scope**: Retain necessary individual judgments, distributions, uncertainty and joint conditions. Aggregation does not authorize sample/instance exclusions or data changes beyond existing scope rules. Do not construct a reference method from different methods' best results on different objects.
+
+At Level 2, establish the aggregation, its basis and complete constituent-result locations; record the adopted calculation in `criteria`/`protocol` and its support in Rule 2.1 evidence. Level 3 extracts the values, checks final scope correspondence and calculates the aggregate. Do not fill gaps by rerunning methods, evaluating reference artifacts or substituting theoretical optima. Unsupported assessment definitions or required constituents fail the comparison condition.
+
+##### Conflicting Source Definitions
+
+First diagnose the apparent problem. Distinguish an unclear description, imprecise or overstated wording, a genuine contradiction, a missing essential definition and a code implementation issue. Check whether statements concern the same quantity, objects, version and conditions; abbreviated wording or an optimization claim alone does not establish inconsistent scientific definitions.
+
+Inspect relevant source passages, supplements, configurations or code as needed. For code, follow the relevant inputs, selection/transformation steps and assessment calls to establish why it behaves this way and whether it changes assessed objects, quantities or denominators. It may implement an evaluation rule, rely on source-data assumptions, support diagnostic analysis, or contain a defect. Published code establishes its behavior, not that the reported results used that version and configuration. A code defect does not change an otherwise clear task requirement.
+
+For example, if the paper requires scoring all images but the code removes samples with no generated image, check whether the source method always produced an image, the removal serves only diagnostic analysis, or the scoring implementation incorrectly excludes failures. Do not automatically adopt the removal as the task rule or treat it as a contradiction in the task definition.
+
+Adopt a definition only when the checks establish it accurately, including cases where an apparent discrepancy is resolved or has no effect on the judgment. Neither prose nor code has unconditional priority. Do not force a choice between unresolved alternatives, invent scientific failure handling, remove required data or weaken G to obtain a pass. A genuine unresolved contradiction or essential gap fails the item.
+
+For a confirmed implementation defect, record the correct evaluation behavior and the source support establishing it. Retain the paper's reported score as the comparison result, with the defect and its effect on the measured quantity, coverage or denominator explicitly disclosed.  Do not recalculate or replace the source score.
+
+##### Source Evaluation Protocol
+
+By default, retain the paper's evaluation protocol: how the assessment obtains observations and evaluates results under specified conditions. Preserve the source-defined data selection and preprocessing, measurement boundaries and necessary statistical procedures.
+
+Gather the conditions relevant to the assessment from the Methods, captions, supplements and configurations. Check their applicability together before concluding that a necessary condition is missing.
+
+In particular, identify the number of runs, how their results are aggregated, and the data-partitioning method and parameters, including ratios and required stratification, grouping or temporal order. Preserve fixed source partition membership when supplied. For a random procedure, an explicitly used seed must be recoverable from the paper or supporting materials; an unknown stated seed cannot be replaced with a new one. Check which operation a recovered seed controls; finding it in training or plotting code alone does not establish that it controls partitioning. If no source seed is specified, this alone does not fail the assessment; other parameters needed to define the partition must still be established.
+
+###### Fixed-Split Adaptation
+
+For alternative evaluation partitions of the same dataset and solving setting, retain one partitioning scheme and one fixed partition; do not create separate instances merely for different schemes, folds or random repetitions. Jointly exposing their training labels may reveal protected evaluation answers, whether the partitions belong to one instance or several.
+
+When the paper uses different partitioning schemes, select the most important to G according to its stated aims, primary experiments and central conclusions, not acquisition convenience or favorable scores. Preserve the selected scheme's data population, selection rules, proportions and necessary grouping/stratification/temporal conditions, applying the parameter and seed requirements above. Retain supplied fixed memberships.
+
+Convert K-fold or random-split evaluation to one fixed partition when cross-split stability is not itself required by G or C. For ordinary K-fold, one retained fold uses the source `(K-1):1` training/test ratio. Retain additional validation requirements and necessary repeated runs within that partition; do not choose a split by performance.
+
+If the assessment requires multiple schemes, folds or repeated random partitions and one fixed partition cannot establish the required judgment, reject the item under Rule 2.1. This includes required cross-split stability assessment. Do not remove the requirement or narrow G to permit a single partition.
+
+Record the adopted conditions in the item's `protocol`, and the scheme selection or fixed-split adaptation with its source-supported basis in Rule 2.1's `protocol_adjustments[]`. Use the paper's reported central score for the selected scheme as the comparison result, keeping its original repetition/aggregation context and any reported ± expression and meaning. No matching single-split source score or rerun is required.
+
+### Rule 2.2: Automatic and Reproducible Evaluation
+
+#### Pass Conditions
+
+For each item passing Rule 2.1, all five conditions must hold:
+
+1. **Automated computation**: The required judgment can be made from the submission, reference information and computational observations, without new physical operations or indispensable human participation. For a rubric, every necessary judgment has a supported deterministic-rule or LLM-Judge route.
+2. **No training within evaluation**: Assessing the completed solution does not require training or fine-tuning a model, including training a judge, probe or submitted method. Solver work required by G remains part of solving.
+3. **Independent assessment**: The assessment applies to all permitted solutions without requiring components unique to the reference method. It may execute a submitted program or fixed model; that method's own assertions or learned reward do not independently establish its result.
+4. **Local execution**: Evaluation can run locally, except for the LLM Judge.
+5. **Repeatable execution**: The same submission can be evaluated repeatedly with consistent interpretation under the specified conditions, within justified numerical or statistical tolerances.
+
+
+#### Judgment Guidance
+
+##### Solving and Evaluation Training
+
+Use G, O and the source method's workflow to identify what work produces the required solution and what work judges it. Pretraining, fine-tuning or downstream adaptation belongs to the Solver when it is part of achieving G; the paper calling it an evaluation experiment does not change that role. Do not perform the Solver's work inside the evaluator.
+
+Conversely, if judging a completed submission requires fitting an assessment model or training the submitted method on further data, the assessment does not qualify. Do not move this work into preparation or add Solver obligations merely to bypass the restriction. Inference with an already trained, fixed model is permitted when the other conditions hold.
+
+##### Resources and Measurement Conditions
+
+For a required resource measurement or limit, establish the quantity or counted operation, units, covered work and period, applicable conditions, and how compliance or the score can be determined. Distinguish whole solving-process requirements from measurements of submitted artifacts, evaluation executions or official tool operations. A record covering one route does not establish coverage of other routes the requirement includes.
+
+Require a supported way to obtain trustworthy measurements or apply the required control. A limit may be checked from complete trusted observations after execution or enforced by a control that guarantees it; do not require both measurement and hard blocking when one establishes the required judgment. If the source protocol requires preventing access to excess observations, retrospective rejection alone is insufficient. Solver-written logs alone do not establish compliance. A rule in a prompt or an unspecified future pipeline capability is not a supported mechanism; concrete evaluator, execution or tool capabilities must establish feasibility, without implementing them at this level.
+
+Reject when necessary hardware, capacity, timing, operating conditions or observation/control coverage cannot be supported. Identical hardware is unnecessary for a hardware-independent definition; do not assume hardware equivalence, rescale reported runtimes by assumed performance ratios, or replace the required metric. Hardware and time merely reported for the authors' method do not create mandatory task conditions. [Rule 3.2](level3_rules.md#rule-32-resource-completeness) checks the required resource capabilities; [Rule 3.4](level3_rules.md#rule-34-task-and-evaluation-consistency) checks source-condition correspondence and comparison applicability.
+
+##### Local Execution
+
+Evaluation must be executable locally, including any required services. The evaluation depends on an external service or API (e.g., cloud-hosted model endpoint, online scoring platform) with no locally executable alternative. Reproducibility cannot be guaranteed. The LLM Judge used by the task evaluator for rubric-based assessment is exempt: its model and API access are configured at evaluation runtime.
+
+##### Physical and Human Assessment
+
+Exclude assessments requiring new wet-lab experiments, physical operations or indispensable human participation. Existing measurements and annotations may serve as references for computational assessment.
+
+A source human assessment may support one automated rubric item only when available submission contents, references and explicit standards support the same required judgment. Establish this correspondence; an LLM cannot replace new human observations, physical measurements or an undefined subjective judgment. Do not keep human and automated versions as duplicate items or use human scores as automatically comparable LLM scores. Record the source procedure, adopted automated standards and supporting checks in `definition_decisions[]` with `type: human_assessment_automation`. Omit human/LLM demonstrations that only illustrate or explain the source method and do not assess a task requirement.
+
+### Overall Decision
+
+Account for all necessary judgments under the established G, C and O. Explain consequential exclusions or grouping decisions without creating separate records for repeated reports or internal subcalculations.
+
+- **Pass**: Items passing both rules, including at least one `goal_achievement` item, fully assess the retained computational task and all necessary within-instance and joint judgments. Qualifying computational assessments must remain sufficient after physical or unsupported human assessments are excluded.
+- **Fail**: No permitted selection of complete source instances preserves G and every necessary requirement with qualifying evaluation. One passing score or instance is insufficient when a necessary task requirement remains unsupported.
+
+An instance with an unsupported necessary assessment cannot be retained unchanged. Complete-instance exclusions preserve G, retained requirements, dependencies and joint evaluation, with affected judgments and comparisons rechecked. If no such selection qualifies, apply [scope reassessment](../SKILL.md#scope-reassessment) before final rejection. A pass continues to Level 3 for resources and instance-specific comparability.
+
+## Results and Recording
+
+Use the [Output Schema](output_schema.md) for field definitions.
+
+### Task Information
+
+- **`task_info.instances[]`**: Record retained candidate `id`, `name`, `description`, `objects`, `source` and C/O/V references, plus already established artifact dependencies. Level 3 confirms boundaries and relationships and completes data and environment bindings. Omit unassessed fields instead of using empty arrays.
+- **`task_info.deliverables[]`**: Record `id`, `name`, required `description` and `source`.
+- **`task_info.evaluation_items[]`**: Keep only independent items passing both rules and serving retained instances. Record `id`, `name`, `deliverable_ids`, `requirement`, `required_information`, `criteria`, `protocol`, `category`, adopted `method` and `source`. These are the final supported definitions after clarification, rubric derivation and permitted protocol adjustments. Goal items omit `comparison_results` until Level 3; validity uses `[]`.
+- - **Record locations**: Final task conditions belong in `protocol`, judgment standards in `criteria`, and required submission/reference/observation contents in `required_information`. Level 3 records source scores in `comparison_results[].results[].result` and result-specific original conditions, ± information and comparison differences in `conditions`. For a retained score affected by an implementation defect, `conditions` identifies the defect, supporting location, known or possible score impact and interpretation limits. Use `null` only when no extra conditions need recording.
+- **Scope and references**: Use the goal last assessed at Level 1, including after scope reassessment. Define shared C/O/V once with stable IDs; instances reference applicable entries. After excluding instances, update the affected ID references from instances to constraints (C), deliverables (O) and evaluation items (V), without removing or weakening any requirement of the retained instances.
+
+### Screening Records
+
+In the Level 2 entry of `filtering_process`, record:
+
+- **`item_assessments[]`**: One record per independent assessment and applicable scope, with `item_id`, `item_name`, nonempty `instance_ids` and `rules[]`. Preserve necessary failed items and records for excluded instances. Merge repeated descriptions; internal checks remain inside their parent assessment. Rule 2.2 is unassessed when Rule 2.1 fails. Do not duplicate the task definition in these records.
+- **`definition_decisions[]` in Rule 2.1**: Record only findings resolved through inspection: the issue, its classification, supported adopted definition and selection basis. For an automated interpretation of human assessment, use `type: human_assessment_automation`; identify the original procedure and why the adopted method establishes the same judgment. Unresolved essential issues belong in failed rule reasons and evidence, without a forced adopted definition.
+- **`protocol_adjustments[]` in Rule 2.1**: Record adopted permitted departures using `source_protocol`, `adopted_protocol`, `justification` and `comparison_limitations`. Both decision arrays use `[]` when no entries apply.
+- **Rule `reason` and `evidence`**: State the outcome and supporting sources or checks, including unsupported source methods and unresolved issues. Reference records without copying them.
+- **`task_info_changes[]`**: Record changes to previously established task information; normal first completion needs no change entry.
+- **Level `passed`, `reason` and `evidence`**: Explain whole-task sufficiency, retained/excluded instances and unmet requirements. Preserve actual item outcomes on failure.
+
+Share a record when the conclusions hold throughout its scope. Split records when conclusions differ across instances; source locations or comparison values alone do not require separate records.

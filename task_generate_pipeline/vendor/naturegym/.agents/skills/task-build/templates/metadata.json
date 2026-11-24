@@ -1,0 +1,128 @@
+{
+  "task_name": "Task Name String (must match README title)",
+  "tooling_metadata": {
+    "main_tools": [
+      {
+        "name": "Required tool",
+        "purpose": "Required task capability",
+        "required_by": "solver | evaluator | both",
+        "interfaces": ["library_api"],
+        "gui_interaction_required": false,
+        "interface": "Actual import/API, command entry point, service or GUI software interface"
+      }
+    ]
+  },
+  "domain_metadata": {
+    "primary_domains": [
+      "Specific application domain; multiple domains when needed"
+    ],
+    "sub_domain": "String (1-3 words)",
+    "domain_tags": [
+      "keyword1",
+      "keyword2",
+      "keyword3"
+    ]
+  },
+  "compute_resource_requirements": {
+    "solving": {
+      "cpu_compute": {
+        "quantity": "Positive integer CPU quantity in the recorded unit",
+        "unit": "physical_core | logical_processor | processor | core_unspecified",
+        "severity": "low | medium | high"
+      },
+      "memory": {
+        "quantity": "Positive finite system-RAM capacity",
+        "unit": "GiB",
+        "severity": "low | medium | high"
+      },
+      "gpu_compute": {
+        "model": "Selected GPU model/version; omit when count is 0",
+        "count": "Nonnegative integer GPU count",
+        "memory_per_device": {
+          "quantity": "Positive finite per-card capacity; omit this object when count is 0",
+          "unit": "GB | GiB"
+        },
+        "severity": "none | low | medium | high"
+      },
+      "runtime": {
+        "quantity": "Positive finite number or bounded range such as 2-4",
+        "unit": "h",
+        "severity": "under_1h | 1_to_4h | 4_to_12h | 12_to_24h | over_24h"
+      },
+      "notes": "Applicable source/check locations; reused versus estimated fields; complete workload calculation, concurrency and assumptions"
+    },
+    "evaluation": {
+      "cpu_compute": {
+        "quantity": "Positive integer CPU quantity in the recorded unit",
+        "unit": "physical_core | logical_processor | processor | core_unspecified",
+        "severity": "low | medium | high"
+      },
+      "memory": {
+        "quantity": "Positive finite system-RAM capacity",
+        "unit": "GiB",
+        "severity": "low | medium | high"
+      },
+      "gpu_compute": {
+        "model": "Selected GPU model/version; omit when count is 0",
+        "count": "Nonnegative integer GPU count",
+        "memory_per_device": {
+          "quantity": "Positive finite per-card capacity; omit this object when count is 0",
+          "unit": "GB | GiB"
+        },
+        "severity": "none | low | medium | high"
+      },
+      "runtime": {
+        "quantity": "Positive finite number or bounded range such as 2-4",
+        "unit": "h",
+        "severity": "under_1h | 1_to_4h | 4_to_12h | 12_to_24h | over_24h"
+      },
+      "notes": "Applicable source/check locations; reused versus estimated fields; complete workload calculation, concurrency and assumptions"
+    }
+  },
+  "source": {
+    "paper_id": "source paper ID",
+    "title": "source paper title"
+  },
+  "goal": "Source-established discovery goal, consistent with task_info.goal.description and README",
+  "task_types": ["optimization"],
+  "evaluation_weights": {
+    "E1": 1.0
+  },
+  "evaluation_scope_weights": {},
+  "evaluation_comparisons": [
+    {
+      "item_id": "E1",
+      "comparison_results": [
+        {
+          "scope": "instance",
+          "instances": [
+            "instance_a"
+          ],
+          "target": 0.0,
+          "results": [
+            {
+              "method": "Corresponding source method",
+              "method_role": "paper_method | baseline | null",
+              "variant": null,
+              "is_sota": true,
+              "baseline_roles": [],
+              "result": 1.0,
+              "conditions": null,
+              "source": "Precise reported-result location and supporting material IDs"
+            },
+            {
+              "method": "Selected zero baseline",
+              "method_role": "baseline",
+              "variant": null,
+              "is_sota": false,
+              "baseline_roles": ["zero"],
+              "result": 2.0,
+              "conditions": "Same target quantity, units and assessment conditions",
+              "source": "Precise reported baseline location and supporting material IDs"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

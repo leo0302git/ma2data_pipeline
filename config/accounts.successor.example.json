@@ -1,0 +1,20 @@
+{
+  "accounts": [
+    {
+      "id": "successor",
+      "codex_home": "/data/ma2data/task_generate_pipeline/private/codex-successor",
+      "codex_binary": "/data/ma2data/task_generate_pipeline/.tools/bin/codex-proxy",
+      "capacity": 1,
+      "enabled": true
+    }
+  ],
+  "wait_seconds": 30,
+  "call_timeout_seconds": 300,
+  "stage_timeouts": {
+    "task-build": 900,
+    "task-fix": 900,
+    "task-metadata": 600,
+    "task-verify": 600,
+    "verification-cases": 900
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "tool_records": {},
+  "evaluation_items": [
+    {
+      "id": "E1",
+      "name": "Required result assessment",
+      "method": "program",
+      "result": {
+        "type": "number",
+        "description": "Raw measurement in the declared unit",
+        "unit": null,
+        "direction": "target"
+      },
+      "category": "goal_achievement",
+      "scope": "instance",
+      "validity_item_ids": [],
+      "deliverable_roles": [
+        "result"
+      ],
+      "input_roles": [
+        "problem"
+      ],
+      "reference_roles": []
+    }
+  ],
+  "instances": [
+    {
+      "name": "instance_a",
+      "solver_data": {
+        "problem": "input/data/instances/instance_a/problem/input.json"
+      },
+      "inputs": {
+        "problem": "input/data/instances/instance_a/problem/input.json"
+      },
+      "references": {},
+      "deliverables": {
+        "result": "result.json"
+      },
+      "evaluation_items": [
+        "E1"
+      ]
+    }
+  ]
+}

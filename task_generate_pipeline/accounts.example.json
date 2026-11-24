@@ -1,0 +1,13 @@
+{
+  "accounts": [
+    {
+      "id": "personal",
+      "codex_home": "/path/to/private/codex",
+      "codex_binary": "codex",
+      "capacity": 1,
+      "enabled": true
+    }
+  ],
+  "wait_seconds": 30,
+  "call_timeout_seconds": 300
+}

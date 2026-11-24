@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "version": "seed43-v32-maintenance",
+  "files": [
+    {
+      "path": "accounts.example.json",
+      "sha256": "826f7dfe7a9024a2008e5782061f484d3aa973c3cf952737e2a7e16eea48c09a"
+    },
+    {
+      "path": "agent.py",
+      "sha256": "c1dc5e36fffe956b733233e571ac8a61902174e2750afe8600392d092e962b3d"
+    },
+    {
+      "path": "authoring_methods.py",
+      "sha256": "cf9082fe1a999c9cad1307f2c5528cda300d10a0686a453a934173c77f66b033"
+    },
+    {
+      "path": "BUILD_GUIDE.md",
+      "sha256": "b23e2b83b9a106a75b6d07e6ced168ea4431f8e333dba7115a5ce1421cae29f4"
+    },
+    {
+      "path": "common.py",
+      "sha256": "e9482e66da36bd9be7d536f1a94fd7a9626d80ae182375b756fd54e574ff7e4a"
+    },
+    {
+      "path": "COMPARISON_PROFILES.md",
+      "sha256": "e37f518cb3a4867ea021c54c1f90015e68a836d38771df66a0c1f2c93f466c3a"
+    },
+    {
+      "path": "comparisons.py",
+      "sha256": "be643693526d67b5c109551102c6941d3f3bbd894ff6222f09a9e29883d1f6fc"
+    },
+    {
+      "path": "contracts.py",
+      "sha256": "f3e241a117beb06846f77c06feda3a771cb97b75feae2355c291e0c259e3cbde"
+    },
+    {
+      "path": "discovery.py",
+      "sha256": "47302472d3afc9ed014c4b773eee762e98bc10664da9a8036b7b002baf654ab2"
+    },
+    {
+      "path": "group_seed_bindings.json",
+      "sha256": "6fcef37432f9d8d6afe59da016403dd41d8e71ac4cdc7c3d7bf1017e963317b8"
+    },
+    {
+      "path": "ldm_1105_server_inventory.csv",
+      "sha256": "a4311be298891dab273654b9b8a03a6b1ab9b8678b8dac2066112017fe6b6eaf"
+    },
+    {
+      "path": "OPERATIONS.md",
+      "sha256": "08f4cfd97f4783d130230dbace8eb327c5ea537cd1ac519dc2ab213c855e3b47"
+    },
+    {
+      "path": "operations.py",
+      "sha256": "e4749e4198f7c5535f5ba35367f939aeb95878d38082477988356c6082111cb1"
+    },
+    {
+      "path": "pipeline.py",
+      "sha256": "d7e6778d536cd24c2b43e09ed43ab7128867048e609a8478e398bb889b4953a4"
+    },
+    {
+      "path": "profiles.py",
+      "sha256": "7100b79de6fdad872cd1c20107221ffcac9d07622e682cbac5901a5a3827ff8d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5700b1b5269a80fd5ca86c0cc687667ee3551ac32d1ed24bee4a8a88b4bc5ce5"
+    },
+    {
+      "path": "reference.py",
+      "sha256": "941c63871865a0c8b05efd8e1c5680ffa41aa4d1c4a96cc7f7340ee9df5c9fb0"
+    },
+    {
+      "path": "runtime-images/Dockerfile.opf",
+      "sha256": "8e132e214edad5e49be101bf305e685fa5feadbf2fc228619f217509d9441fec"
+    },
+    {
+      "path": "runtime-images/Dockerfile.pdf",
+      "sha256": "9d6ba76557eee6306748965a1a8612babe05bdaf2d1d0da6bc99bbe820691b4d"
+    },
+    {
+      "path": "runtime-images/Dockerfile.science",
+      "sha256": "e6a329fc8c89537dbaa1bfaf3da6c8c588347a01411c25cb31b5c7faf0571776"
+    },
+    {
+      "path": "runtime-images/opf-runtime-receipt.json",
+      "sha256": "a30552718856c0b83e743b83cbbbb4f6884ddb00d3a771795e3c307051a13f00"
+    },
+    {
+      "path": "runtime-images/pdf-runtime-receipt.json",
+      "sha256": "a5ce45e9bfac92e5c859efd49e4fb2f462442a9158919bfad6476b620cb1c3ff"
+    },
+    {
+      "path": "runtime.py",
+      "sha256": "6ab5cf1c5b24c7865da8dbfbbf6242e61910f32f795cdbf554d4d97a1eeb2b05"
+    },
+    {
+      "path": "SEED_BINDING_MIGRATION_v22.json",
+      "sha256": "93277f6d855bcbb2895419bce7b80663a92d40b3d02702856aef1283f5961be8"
+    },
+    {
+      "path": "seed_catalog.json",
+      "sha256": "6a94fdce5b7e33c33491319968b4a4bf204e568be7beb61e86b5aa656c31d61a"
+    },
+    {
+      "path": "SEED_DISCOVERY_GUIDE.md",
+      "sha256": "f5860641918605ed2dbe5ef49d5d604d554d1ce1fd0b2661d0217fdfda54090e"
+    },
+    {
+      "path": "skills/protocol.md",
+      "sha256": "9e24ed5b1bf591a69fbf9f2dba7ab6b4170e33b6523063f574f4623491452864"
+    },
+    {
+      "path": "skills/seed-discover/SKILL.md",
+      "sha256": "22194cd015ad0e2252d32bfbd51969b8f3f2103858fa48bc79092d7485d80614"
+    },
+    {
+      "path": "skills/seed-interface-align/SKILL.md",
+      "sha256": "dbee9bc37f7b26bec4ce19ef265ba17a468f4839eefef39907ab6a0be55e99c2"
+    },
+    {
+      "path": "skills/seed-select/SKILL.md",
+      "sha256": "858353b1190609430f0a79a91fb68f8c17a589ee01d2eaa9104c120ab085b70e"
+    },
+    {
+      "path": "skills/seed-unit-refine/SKILL.md",
+      "sha256": "0decd6919526d22d72abe74c038635f4e5cf9b8ce5b4b2e4f1eff1264d7df612"
+    },
+    {
+      "path": "skills/task-build/SKILL.md",
+      "sha256": "cc4f89920a3709e7113235db04c565f7f29bb459ee01f760c7015f0b2965c8cb"
+    },
+    {
+      "path": "skills/task-fix/SKILL.md",
+      "sha256": "8c70c2d16856c4b1fa19f4de8da5b51843d6979623a6156f592aa728d58bc24e"
+    },
+    {
+      "path": "skills/task-metadata/SKILL.md",
+      "sha256": "a095396293b93039305083f06d74a7a32b5cb816c39a03c8ef3288bc91b95d2a"
+    },
+    {
+      "path": "skills/task-scope/SKILL.md",
+      "sha256": "fc6752794596d6ad635497f9ed837a33cef2ae9b05e0b5c1abdc550480a47e59"
+    },
+    {
+      "path": "skills/task-verify/SKILL.md",
+      "sha256": "f6b3462f702c892c863a6145e418dd299926f65484153ed1fcdfd863fb5f0d9d"
+    },
+    {
+      "path": "skills/verification-cases/SKILL.md",
+      "sha256": "488ae126dad1e83b080c8e84ea83465951a06df91cc62d906d843e857df12aa6"
+    },
+    {
+      "path": "sources.py",
+      "sha256": "7ab010ddc5f639969f8772b81f88a17434af418b4963d1299cb60b81ee7e80cb"
+    },
+    {
+      "path": "tests/test_authoring_methods.py",
+      "sha256": "f853a91d125a95be04028796924a85c72c5acc9dbb2d2bd606b86e79866728bb"
+    },
+    {
+      "path": "tests/test_discovery.py",
+      "sha256": "65ef71273baf7552201b5a112bc4625085e7ff55a1b21b5e51ab780b93e1a127"
+    },
+    {
+      "path": "tests/test_execution_evidence_access.py",
+      "sha256": "fd8573e32e4b70e26777142b130a2835e4c5d25e8bc739ed9ee0df4895c7919d"
+    },
+    {
+      "path": "tests/test_handoffs.py",
+      "sha256": "17f445bbe053a1e696993b8984fc7717d8905ff2e543e5919caa313046b5af1d"
+    },
+    {
+      "path": "tests/test_measured_comparisons.py",
+      "sha256": "c256a6f8ac5882da395601ec50df62ae6afa0acc184e5a5cee0eb500e7a367c2"
+    },
+    {
+      "path": "tests/test_operations.py",
+      "sha256": "72723372dccab5ade1d20a3d55588829eae6616263224748c586af31c0ad75d9"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "sha256": "b2e61ce2c92883ae53612e2e201cc1f5599a6a0ae2f3b3d88fa0b0fcdc6ccc8e"
+    },
+    {
+      "path": "tests/test_profiles.py",
+      "sha256": "91748899382b8da947a5f3ab6471b2119a0256872f8c44d6fcf4a4dd1ff51214"
+    },
+    {
+      "path": "tests/test_reference_policy.py",
+      "sha256": "308c8d97fe20135a025c5aa8335876302c9a0efb34a3e88d413e82cb1ea5087e"
+    },
+    {
+      "path": "tests/test_review_context.py",
+      "sha256": "4ab8b2909c287ac6c4c12f1889c056ee70b7c2cea319ad4f346c1aeed9c6decf"
+    },
+    {
+      "path": "tests/test_scope_feedback.py",
+      "sha256": "cb4a99f701b0eef5d6a7ee9ab20798d581d9fc743474bcde27fe8d6747b8dbc2"
+    },
+    {
+      "path": "tests/test_source_evidence.py",
+      "sha256": "376f0a3994066dd0faa442ea1647c119650207a372b980072b843cde19dd3a17"
+    },
+    {
+      "path": "tests/test_structured_reply.py",
+      "sha256": "77fa62011342ddd91f31860b2dab7262d20828952fb73d957329a4f2d55d271a"
+    },
+    {
+      "path": "tests/test_verifier_evidence.py",
+      "sha256": "ddc9fd9b13d6144e8ec0de498a7ad8b84965a10ae0919357132cb5dadfe12728"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/paper-filter/references/level2_rules.md",
+      "sha256": "4edf54c69a7a5a6eca4dae01ff73ba94d29e3b995fad7241ae126a014ae2945c"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/paper-filter/references/level3_rules.md",
+      "sha256": "bd28740e6cecf00e051f92d01c59de413226318f403a00e03f133956cb09f1e2"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/references/metadata_guide.md",
+      "sha256": "c2e2cd11096cf97ad8d2725e8a14007c918213fb0860af447766dd09c09055d9"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/scripts/check_package.py",
+      "sha256": "3a314605fa025507e60a101819fe13c66dd15369137f103ae34f34af2cfe0259"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/scripts/docker_env_verify.py",
+      "sha256": "04af844be046027fb908537e1de36448dc870036458d4ebe8824a923dc677bf5"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/scripts/environment_runtime_verify.py",
+      "sha256": "52c26357ff1cc956b98db4c22512f059972f495a900107b53dfc21f7bd53f371"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/evaluator.py",
+      "sha256": "bbbcf7ac66b8bc68382b2fe25507f248ce2c522723fe3ee91cde0bd8759ee86f"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/judge.py",
+      "sha256": "9f6b529d556b61f08128b4d8ac2a98f1329eca4c54bb67450bf3b7acd9d34e8c"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/metadata.json",
+      "sha256": "eea7cd5d58f471a055366fa2eabb4863223c6de9ce1d56d1bcceb7eb79ea9221"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/metrics.py",
+      "sha256": "33405a5a35be91de2c58a656278b82c0d6eceb8c290e04a033f2b3deb5706027"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/packages.json",
+      "sha256": "e8fcad893beed5cafd6a533fff04edc1d2739fdc44800d8cb1ec45c84f21c9b4"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/rubric.json",
+      "sha256": "c67b2c0b3f4e0286ab56ef38b117a5d1b5f8fedf320d6e38718f9cfb711028f7"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/rubric.py",
+      "sha256": "af46db0602d1d6de7aa04e13b59d2abc3402573d9bf751564620c32726bc09bb"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/task.json",
+      "sha256": "ea4f3280aaa87d6fcec920da92a57bf4005916dc2ab42aeefa3092cf58e1301b"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-build/templates/task.source.toml",
+      "sha256": "c8a30d485f7989129c2bc55cf0e4589cec9709a3d91288b27bd9f5ddad3af0aa"
+    },
+    {
+      "path": "vendor/naturegym/.agents/skills/task-verify/references/verification_rules.md",
+      "sha256": "a95e93bb5e991dbf20e5c3a45e9a1285bbbbb791f83e5348664da60a51c2fa28"
+    },
+    {
+      "path": "vendor/naturegym/.gitattributes",
+      "sha256": "62ea8c90a67b965c4f0761110797e02838a10d3ec4758e723b2754714be91b63"
+    },
+    {
+      "path": "vendor/naturegym/ADDED_REFERENCE_GUIDES.json",
+      "sha256": "a1dd0b462f0a17da80ab6706827075d0e67a4662f0ce304d4e21a7127cf7baf9"
+    },
+    {
+      "path": "vendor/naturegym/README.md",
+      "sha256": "0785587f519971c0886f4d6eddce9e11042d31c57bd4f506e2a4e98fae453d20"
+    },
+    {
+      "path": "vendor/naturegym/scripts/account_pool.py",
+      "sha256": "6714263f8325829d0c8316cb72e61785592a3ab6e5807fe98364149ff8b4a696"
+    },
+    {
+      "path": "vendor/naturegym/scripts/account_quota.py",
+      "sha256": "ff5001dd49cf7a74cd4a821fdbdaa613f2754c49b094d8ca0d3d53eb7324fa39"
+    },
+    {
+      "path": "vendor/naturegym/scripts/batch_history.py",
+      "sha256": "529ea7dbf9f781358564fcb19bc9aae9da203bbc583905c536c99a6a7daad433"
+    },
+    {
+      "path": "vendor/naturegym/scripts/environment_images.py",
+      "sha256": "d207de41b08167f6bb5fa4e7b7b8ad76be9f3d0078d5a2d2720e260712c3d74f"
+    },
+    {
+      "path": "vendor/naturegym/scripts/process_control.py",
+      "sha256": "afc8f39c9850915bd8aa0f0b55ca16a735727a4bbe3d4df6d1393af3f6c59e0e"
+    },
+    {
+      "path": "verification.py",
+      "sha256": "22c79792dbe8a7569627994d65b00d90e1706e33fd7aa396cf03ecd028716f9e"
+    },
+    {
+      "path": "VERSION.json",
+      "sha256": "d6bd2f6cc1859507e3c50e53e1d99502dcce132fd284a37d8631800ac53660f6"
+    }
+  ]
+}
