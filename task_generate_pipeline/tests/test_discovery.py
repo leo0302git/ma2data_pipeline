@@ -9,8 +9,9 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from common import load, save, digest
+from common import load, save, digest, file_sha
 from discovery import PublicTasks, discover_missing
+from operations import audit_preservation
 from pipeline import build_plan, main
 from sources import COMPLETE, read_seeds
 
@@ -84,6 +85,26 @@ class DiscoveryTests(unittest.TestCase):
         later = build_plan(self.rows, seeds, bindings, None, self.root)
         self.assertEqual(len(later['jobs']), 2)
         self.assertEqual({job['seed_sha256'] for job in later['jobs']}, {digest(seed)})
+
+    def test_discovered_binding_passes_preservation_audit(self):
+        bindings = {}
+        self.assertEqual(self.discover(ChoiceAgent(), bindings)['added'], 1)
+        bindings_path = self.root / 'bindings.json'
+        save(bindings_path, {'groups': bindings})
+        anchor = self.root / 'anchor.txt'
+        anchor.write_text('preserved artifact', encoding='utf-8')
+        baseline = {
+            'schema': 1, 'kind': 'pipeline-preservation', 'project_root': str(self.root),
+            'artifacts': [{'kind': 'file', 'path': str(anchor), 'sha256': file_sha(anchor)}],
+            'registries': [{'seeds': str(self.catalog), 'bindings': str(bindings_path), 'frozen_groups': {}}],
+        }
+        self.assertEqual(audit_preservation(baseline, self.root)['checked']['shared_seed_registry'], 1)
+
+        catalog = load(self.catalog)
+        catalog['seeds'][0]['contract'] += ' Changed assessment.'
+        save(self.catalog, catalog)
+        with self.assertRaisesRegex(ValueError, 'Registry seed hash'):
+            audit_preservation(baseline, self.root)
 
     def test_agent_must_read_selected_original_document(self):
         result = self.discover(ChoiceAgent(read=False))

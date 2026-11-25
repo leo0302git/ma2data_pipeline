@@ -162,20 +162,22 @@ class OperationsTest(unittest.TestCase):
 
     def test_registry_audit_allows_new_groups_but_rejects_existing_group_seed_drift(self):
         from common import digest
-        seed = {'id': 'fixed', 'groups': [['math', 'optimization']]}
+        seed = {'id': 'fixed', 'benchmark': 'TB-Science', 'revision': 'fixture',
+                'url': 'https://example.test/seed', 'groups': [['math', 'optimization']],
+                'file_suffixes': ['.csv'], 'contract': 'Evaluate the submitted solution.'}
         key = '["math","optimization"]'
         binding = {'seed_id': 'fixed', 'seed_sha256': digest(seed)}
         seeds, bindings = self.root/'seeds.json', self.root/'bindings.json'
-        save(seeds, {'seeds': [seed]})
+        save(seeds, {'schema': 1, 'seeds': [seed]})
         save(bindings, {'groups': {key: binding}})
         baseline = {'schema': 1, 'kind': 'pipeline-preservation', 'project_root': str(self.root),
                     'artifacts': [{'kind': 'file', 'path': str(self.root/'anchor'), 'sha256': 'unused'}],
                     'registries': [{'seeds': str(seeds), 'bindings': str(bindings), 'frozen_groups': {key: binding}}]}
         (self.root/'anchor').write_text('immutable')
         baseline['artifacts'][0]['sha256'] = file_sha(self.root/'anchor')
-        added = {'id': 'new', 'groups': [['biology', 'classification']]}
-        save(seeds, {'seeds': [seed, added]})
-        save(bindings, {'groups': {key: binding, '["biology","classification"]': {'seed_id': 'new', 'seed_sha256': digest(added)}}})
+        added = seed | {'id': 'new', 'groups': [['math', 'classification']]}
+        save(seeds, {'schema': 1, 'seeds': [seed, added]})
+        save(bindings, {'groups': {key: binding, '["math","classification"]': {'seed_id': 'new', 'seed_sha256': digest(added)}}})
         self.assertEqual(audit_preservation(baseline, self.root)['checked']['shared_seed_registry'], 1)
         save(bindings, {'groups': {key: {'seed_id': 'new', 'seed_sha256': digest(added)}}})
         with self.assertRaisesRegex(ValueError, 'existing group seed changed'):

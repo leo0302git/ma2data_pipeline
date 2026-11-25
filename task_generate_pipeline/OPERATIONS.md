@@ -43,7 +43,7 @@ python task_generate_pipeline/pipeline.py preflight --project-root "$PWD" \
   --base-image '<已批准的本地镜像ID>' --require-package numpy \
   --output runs/maintenance/preflight.json
 python task_generate_pipeline/pipeline.py audit --project-root "$PWD" \
-  --baseline control/preservation-v32.json --output runs/maintenance/preservation.json
+  --baseline control/preservation-v32-seed-audit-fix.json --output runs/maintenance/preservation.json
 ```
 
 `preflight` 不用账号，实际启动无网络、只读根目录、去除 capabilities 的诊断容器，

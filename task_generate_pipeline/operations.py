@@ -11,6 +11,7 @@ from contextvars import ContextVar
 from pathlib import Path
 
 from common import digest, file_sha, load, lock, regular_files, relative, save, tree_sha
+from sources import read_seeds
 
 
 _GUARD = ContextVar("pipeline_pause_guard", default=None)
@@ -192,11 +193,8 @@ def audit_preservation(baseline, root):
         raise ValueError("An empty preservation baseline cannot pass")
     for registry in baseline.get("registries", []):
         try:
-            entries = load(Path(registry["seeds"]))["seeds"]
-            seeds = {seed["id"]: seed for seed in entries}
+            seeds = read_seeds(Path(registry["seeds"]))
             groups = load(Path(registry["bindings"]))["groups"]
-            if len(seeds) != len(entries):
-                raise ValueError("Duplicate seed IDs")
             for key, frozen in registry["frozen_groups"].items():
                 current = groups[key]
                 if any(current[field] != frozen[field] for field in ("seed_id", "seed_sha256")):
